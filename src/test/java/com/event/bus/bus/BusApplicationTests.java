@@ -8,20 +8,13 @@ import com.event.bus.bus.component.bean.Event;
 import com.event.bus.bus.component.bean.EventType;
 import com.event.bus.bus.component.bean.ProjectBean;
 import com.event.bus.bus.component.bean.ResourceBase;
-import com.event.bus.bus.tree.TreeNode;
-import com.sun.source.tree.BinaryTree;
-import com.sun.source.util.Trees;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.commons.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest

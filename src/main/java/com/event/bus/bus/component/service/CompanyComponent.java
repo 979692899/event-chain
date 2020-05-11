@@ -2,10 +2,8 @@ package com.event.bus.bus.component.service;
 
 import com.event.bus.bus.component.AbstractComponent;
 import com.event.bus.bus.component.IComponent;
-import com.event.bus.bus.component.bean.CafeBean;
 import com.event.bus.bus.component.bean.CompanyBean;
 import com.event.bus.bus.component.bean.Event;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
