@@ -18,7 +18,15 @@ public class EventBusCenter<Listener extends ResourceBase> implements Applicatio
 
     private static ApplicationContext applicationContext;
 
-    private List<String> uuids = new ArrayList<>();
+    // 写死数据，可改为从数据库获取
+    private List<String> uuids = new ArrayList<String>() {
+        {
+            add("CAFE_COMPONENT");
+            add("CODE_COMPONENT");
+            add("COMPANY_COMPONENT");
+            add("PROJECT_COMPONENT");
+        }
+    };
 
     private AsyncEventBus asyncEventBus = new AsyncEventBus(Executors.newCachedThreadPool());
 
@@ -33,12 +41,6 @@ public class EventBusCenter<Listener extends ResourceBase> implements Applicatio
 
     @PostConstruct
     public void init() {
-        // 写死数据，可改为从数据库获取
-        uuids.add("CAFE_COMPONENT");
-        uuids.add("CODE_COMPONENT");
-        uuids.add("COMPANY_COMPONENT");
-        uuids.add("PROJECT_COMPONENT");
-
         for (String uuid : uuids) {
             asyncEventBus.register(applicationContext.getBean(uuid));
         }
