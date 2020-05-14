@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 
+/**
+ * 事件中心，用于注册组件，发布事件
+ * @param <Listener>
+ */
 @Component
 public class EventBusCenter<Listener extends ResourceBase> implements ApplicationContextAware {
 
@@ -21,8 +25,8 @@ public class EventBusCenter<Listener extends ResourceBase> implements Applicatio
     // 写死数据，可改为从数据库获取
     private List<String> uuids = new ArrayList<String>() {
         {
-            add("CAFE_COMPONENT");
-            add("CODE_COMPONENT");
+            add("A_COMPONENT");
+            add("B_COMPONENT");
             add("COMPANY_COMPONENT");
             add("PROJECT_COMPONENT");
         }

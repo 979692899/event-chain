@@ -2,62 +2,63 @@ package com.event.bus.bus.component.service;
 
 import com.event.bus.bus.component.AbstractComponent;
 import com.event.bus.bus.component.IComponent;
-import com.event.bus.bus.component.bean.CodeBean;
+import com.event.bus.bus.component.bean.ABean;
 import com.event.bus.bus.component.bean.Event;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
-@Component("CODE_COMPONENT")
-public class CodeComponent extends AbstractComponent<CodeBean> implements IComponent<CodeBean> {
+@Component("A_COMPONENT")
+public class AComponent extends AbstractComponent<ABean> implements IComponent<ABean> {
 
     @Override
-    protected boolean filter(Event<CodeBean> event) {
+    protected boolean filter(Event<ABean> event) {
         if (StringUtils.isEmpty(event.getUuid())) {
             return false;
         }
-        return !event.getUuid().contains("CODE_COMPONENT");
+        return !event.getUuid().contains("A_COMPONENT");
     }
 
     @Override
-    protected void create(Event<CodeBean> event) {
+    protected void create(Event<ABean> event) {
         if (filter(event)) {
             return;
         }
-        System.out.println("Code create");
+        System.out.println("A create");
     }
 
     @Override
-    protected void delete(Event<CodeBean> event) {
-        if (filter(event)) {
-            return;
-        }
-        System.out.println("Code delete");
-    }
-
-    @Override
-    protected void add(Event<CodeBean> event) {
+    protected void delete(Event<ABean> event) {
         if (filter(event)) {
             return;
         }
         System.out.println(event.getContext().getName());
-        System.out.println("Code add");
+        System.out.println("A delete");
         dispatchEvent(event);
     }
 
     @Override
-    protected void update(Event<CodeBean> event) {
+    protected void add(Event<ABean> event) {
         if (filter(event)) {
             return;
         }
-        System.out.println("Code update");
+        System.out.println(event.getContext().getName());
+        System.out.println("A add");
+        dispatchEvent(event);
     }
 
     @Override
-    protected void clean(Event<CodeBean> event) {
+    protected void update(Event<ABean> event) {
         if (filter(event)) {
             return;
         }
-        System.out.println("Code clean");
+        System.out.println("A update");
     }
 
+    @Override
+    protected void clean(Event<ABean> event) {
+        if (filter(event)) {
+            return;
+        }
+        System.out.println("A clean");
+    }
 }

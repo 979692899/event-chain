@@ -1,8 +1,8 @@
 package com.event.bus.bus;
 
 import com.event.bus.bus.component.EventBusCenter;
-import com.event.bus.bus.component.bean.CafeBean;
-import com.event.bus.bus.component.bean.CodeBean;
+import com.event.bus.bus.component.bean.ABean;
+import com.event.bus.bus.component.bean.BBean;
 import com.event.bus.bus.component.bean.CompanyBean;
 import com.event.bus.bus.component.bean.Event;
 import com.event.bus.bus.component.bean.EventType;
@@ -29,9 +29,9 @@ class BusApplicationTests {
     @Test
     void contextLoads() {
         Event<ResourceBase> event = new Event<>();
-        event.setUuid("CAFE_COMPONENT");
+        event.setUuid("B_COMPONENT");
         event.setEventType(EventType.ADD);
-        event.setContext(new CodeBean("name"));
+        event.setContext(new BBean("name"));
         event.setContexts(new ArrayList<>());
         event.setExtraContext("");
 
@@ -43,11 +43,11 @@ class BusApplicationTests {
      *
      *          COMPANY_COMPONENT
      *                 ｜
+     *                 ｜
      *          PROJECT_COMPONENT
      *                /   \
      *              /      \
-     *            /         \
-     * CODE_COMPONENT      CAFE_COMPONENT
+     *   B_COMPONENT        A_COMPONENT
      */
     @Test
     void tree() {
@@ -66,16 +66,16 @@ class BusApplicationTests {
         projectEvent.setExtraContext("");
 
         Event<ResourceBase> codeEvent = new Event<>();
-        codeEvent.setUuid("CODE_COMPONENT");
+        codeEvent.setUuid("B_COMPONENT");
         codeEvent.setEventType(EventType.ADD);
-        codeEvent.setContext(new CodeBean("code"));
+        codeEvent.setContext(new BBean("B"));
         codeEvent.setContexts(new ArrayList<>());
         codeEvent.setExtraContext("");
 
         Event<ResourceBase> cafeEvent = new Event<>();
-        cafeEvent.setUuid("CAFE_COMPONENT");
+        cafeEvent.setUuid("A_COMPONENT");
         cafeEvent.setEventType(EventType.DELETE);
-        cafeEvent.setContext(new CafeBean("cafe"));
+        cafeEvent.setContext(new ABean("A"));
         cafeEvent.setContexts(new ArrayList<>());
         cafeEvent.setExtraContext("");
 

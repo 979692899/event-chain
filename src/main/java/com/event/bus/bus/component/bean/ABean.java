@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class CafeBean extends ResourceBase {
+public class ABean extends ResourceBase {
 
     private String name;
 

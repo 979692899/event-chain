@@ -6,6 +6,10 @@ import com.google.common.eventbus.Subscribe;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * 组件抽象类，定义了基本的CRUD操作和分发事件机制
+ * @param <Listener>
+ */
 public abstract class AbstractComponent<Listener extends ResourceBase> implements IComponent<Listener> {
 
     @Autowired
@@ -35,6 +39,11 @@ public abstract class AbstractComponent<Listener extends ResourceBase> implement
         }
     }
 
+    /**
+     * 组件内过滤不需要处理的事件
+     * @param event 事件
+     * @return boolean
+     */
     protected abstract boolean filter(Event<Listener> event);
 
     protected abstract void create(Event<Listener> event);
