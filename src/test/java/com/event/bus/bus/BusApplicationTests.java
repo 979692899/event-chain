@@ -40,6 +40,8 @@ class BusApplicationTests {
 
     /**
      * 树状调用
+     * 不适用与存在结果依赖的关系，如PROJECT_COMPONENT依赖COMPANY_COMPONENT的结果，A&B 依赖 PROJECT_COMPONENT的结果
+     * 适用互相独立的事件
      *
      *          COMPANY_COMPONENT
      *                 ｜

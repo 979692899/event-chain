@@ -4,11 +4,16 @@ import com.event.bus.bus.component.AbstractComponent;
 import com.event.bus.bus.component.IComponent;
 import com.event.bus.bus.component.bean.CompanyBean;
 import com.event.bus.bus.component.bean.Event;
+import com.event.bus.bus.component.bean.EventType;
+import com.event.bus.bus.component.bean.ProjectBean;
+import com.event.bus.bus.component.bean.ResourceBase;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component("COMPANY_COMPONENT")
-public class CompanyComponent extends AbstractComponent<CompanyBean> implements IComponent<CompanyBean> {
+public class CompanyComponent extends AbstractComponent<CompanyBean, CompanyBean> implements IComponent<CompanyBean> {
 
     @Override
     protected boolean filter(Event<CompanyBean> event) {

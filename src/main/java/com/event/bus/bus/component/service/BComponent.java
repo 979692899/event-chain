@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 @Component("B_COMPONENT")
-public class BComponent extends AbstractComponent<BBean> implements IComponent<BBean> {
+public class BComponent extends AbstractComponent<BBean, BBean> implements IComponent<BBean> {
 
     @Override
     protected boolean filter(Event<BBean> event) {

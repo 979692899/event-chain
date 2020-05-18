@@ -10,10 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 组件抽象类，定义了基本的CRUD操作和分发事件机制
  * @param <Listener>
  */
-public abstract class AbstractComponent<Listener extends ResourceBase> implements IComponent<Listener> {
+public abstract class AbstractComponent<Producer extends ResourceBase, Listener extends ResourceBase>
+        implements IComponent<Listener> {
 
     @Autowired
-    private EventBusCenter<Listener> eventBusCenter;
+    private EventBusCenter<Producer> eventBusCenter;
 
     @Override
     @Subscribe
@@ -60,9 +61,9 @@ public abstract class AbstractComponent<Listener extends ResourceBase> implement
      * 传播事件
      * @param event 事件变种
      */
-    protected void dispatchEvent(Event<Listener> event) {
+    protected void dispatchEvent(Event<Producer> event) {
         if (CollectionUtils.isNotEmpty(event.getChildren())) {
-            for (Event<Listener> child : event.getChildren()) {
+            for (Event<Producer> child : event.getChildren()) {
                 eventBusCenter.postAsync(child);
             }
         }
