@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 @Component("B_COMPONENT")
-public class BComponent extends AbstractComponent<BBean, BBean> implements IComponent<BBean> {
+public class BComponent extends AbstractComponent<BBean> implements IComponent<BBean> {
 
     @Override
     protected boolean filter(Event<BBean> event) {
@@ -20,43 +20,27 @@ public class BComponent extends AbstractComponent<BBean, BBean> implements IComp
 
     @Override
     protected void create(Event<BBean> event) {
-        if (filter(event)) {
-            return;
-        }
         System.out.println("B create");
     }
 
     @Override
     protected void delete(Event<BBean> event) {
-        if (filter(event)) {
-            return;
-        }
         System.out.println("B delete");
     }
 
     @Override
     protected void add(Event<BBean> event) {
-        if (filter(event)) {
-            return;
-        }
         System.out.println(event.getContext().getName());
         System.out.println("B add");
-        dispatchEvent(event);
     }
 
     @Override
     protected void update(Event<BBean> event) {
-        if (filter(event)) {
-            return;
-        }
         System.out.println("B update");
     }
 
     @Override
     protected void clean(Event<BBean> event) {
-        if (filter(event)) {
-            return;
-        }
         System.out.println("B clean");
     }
 

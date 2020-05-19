@@ -4,12 +4,13 @@ import com.event.bus.bus.component.AbstractComponent;
 import com.event.bus.bus.component.IComponent;
 import com.event.bus.bus.component.bean.CompanyBean;
 import com.event.bus.bus.component.bean.Event;
+import com.event.bus.bus.component.bean.ExtraContext;
 import com.event.bus.bus.component.bean.ProjectBean;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 @Component("PROJECT_COMPONENT")
-public class ProjectComponent extends AbstractComponent<ProjectBean, ProjectBean> implements IComponent<ProjectBean> {
+public class ProjectComponent extends AbstractComponent<ProjectBean> implements IComponent<ProjectBean> {
 
     @Override
     protected boolean filter(Event<ProjectBean> event) {
@@ -21,44 +22,29 @@ public class ProjectComponent extends AbstractComponent<ProjectBean, ProjectBean
 
     @Override
     protected void create(Event<ProjectBean> event) {
-        if (filter(event)) {
-            return;
-        }
         System.out.println("Project create");
-
     }
 
     @Override
     protected void delete(Event<ProjectBean> event) {
-        if (filter(event)) {
-            return;
-        }
         System.out.println("Project delete");
     }
 
     @Override
     protected void add(Event<ProjectBean> event) {
-        if (filter(event)) {
-            return;
-        }
         System.out.println(event.getContext().getName());
+        ExtraContext context = event.getExtraContext();
+        System.out.println(context.getCompanyBean());
         System.out.println("Project add");
-        dispatchEvent(event);
     }
 
     @Override
     protected void update(Event<ProjectBean> event) {
-        if (filter(event)) {
-            return;
-        }
         System.out.println("Project update");
     }
 
     @Override
     protected void clean(Event<ProjectBean> event) {
-        if (filter(event)) {
-            return;
-        }
         System.out.println("Project clean");
     }
 

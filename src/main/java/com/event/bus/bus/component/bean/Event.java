@@ -21,14 +21,14 @@ public class Event<T extends ResourceBase> {
     /**
      * 附加参数，事件链中上下游传递参数的一种折中参数，主要用与context和contexts不能满足的情况
      */
-    private String extraContext;
+    private ExtraContext extraContext;
 
     public void addChildrenEvent(Event<T> event) {
         this.children.add(event);
     }
 
     public Event<T> generateChildrenEvent(String uuid, EventType eventType,
-                                 T context, ArrayList<T> contexts, String extraContext) {
+                                 T context, ArrayList<T> contexts, ExtraContext extraContext) {
         Event<T> event = new Event<>();
         event.setUuid(uuid);
         event.setEventType(eventType);
@@ -36,5 +36,12 @@ public class Event<T extends ResourceBase> {
         event.setContexts(contexts);
         event.setExtraContext(extraContext);
         return event;
+    }
+
+    public ExtraContext getExtraContext() {
+        if (this.extraContext == null) {
+            return new ExtraContext();
+        }
+        return this.extraContext;
     }
 }

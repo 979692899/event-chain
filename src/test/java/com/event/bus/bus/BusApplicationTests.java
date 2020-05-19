@@ -6,6 +6,7 @@ import com.event.bus.bus.component.bean.BBean;
 import com.event.bus.bus.component.bean.CompanyBean;
 import com.event.bus.bus.component.bean.Event;
 import com.event.bus.bus.component.bean.EventType;
+import com.event.bus.bus.component.bean.ExtraContext;
 import com.event.bus.bus.component.bean.ProjectBean;
 import com.event.bus.bus.component.bean.ResourceBase;
 import org.junit.jupiter.api.Test;
@@ -33,7 +34,6 @@ class BusApplicationTests {
         event.setEventType(EventType.ADD);
         event.setContext(new BBean("name"));
         event.setContexts(new ArrayList<>());
-        event.setExtraContext("");
 
         eventBusCenter.postAsync(event);
     }
@@ -58,28 +58,24 @@ class BusApplicationTests {
         event.setEventType(EventType.ADD);
         event.setContext(new CompanyBean("company"));
         event.setContexts(new ArrayList<>());
-        event.setExtraContext("");
 
         Event<ResourceBase> projectEvent = new Event<>();
         projectEvent.setUuid("PROJECT_COMPONENT");
         projectEvent.setEventType(EventType.ADD);
         projectEvent.setContext(new ProjectBean("project"));
         projectEvent.setContexts(new ArrayList<>());
-        projectEvent.setExtraContext("");
 
         Event<ResourceBase> codeEvent = new Event<>();
         codeEvent.setUuid("B_COMPONENT");
         codeEvent.setEventType(EventType.ADD);
         codeEvent.setContext(new BBean("B"));
         codeEvent.setContexts(new ArrayList<>());
-        codeEvent.setExtraContext("");
 
         Event<ResourceBase> cafeEvent = new Event<>();
         cafeEvent.setUuid("A_COMPONENT");
         cafeEvent.setEventType(EventType.DELETE);
         cafeEvent.setContext(new ABean("A"));
         cafeEvent.setContexts(new ArrayList<>());
-        cafeEvent.setExtraContext("");
 
         event.addChildrenEvent(projectEvent);
         projectEvent.addChildrenEvent(cafeEvent);
