@@ -4,14 +4,9 @@ import com.event.bus.bus.component.AbstractComponent;
 import com.event.bus.bus.component.IComponent;
 import com.event.bus.bus.component.bean.CompanyBean;
 import com.event.bus.bus.component.bean.Event;
-import com.event.bus.bus.component.bean.EventType;
-import com.event.bus.bus.component.bean.ExtraContext;
-import com.event.bus.bus.component.bean.ProjectBean;
-import com.event.bus.bus.component.bean.ResourceBase;
+import com.event.bus.bus.component.comtext.CompanyContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 
 @Component("COMPANY_COMPONENT")
 public class CompanyComponent extends AbstractComponent<CompanyBean> implements IComponent<CompanyBean> {
@@ -39,9 +34,7 @@ public class CompanyComponent extends AbstractComponent<CompanyBean> implements 
         CompanyBean companyBean = new CompanyBean("company extra");
         System.out.println(event.getContext().getName());
         System.out.println("Company add");
-        ExtraContext extraContext = event.getExtraContext();
-        extraContext.setCompanyBean(companyBean);
-        event.setExtraContext(extraContext);
+        event.setExtraContext(new CompanyContext(companyBean));
     }
 
     @Override

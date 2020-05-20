@@ -6,7 +6,6 @@ import com.event.bus.bus.component.bean.BBean;
 import com.event.bus.bus.component.bean.CompanyBean;
 import com.event.bus.bus.component.bean.Event;
 import com.event.bus.bus.component.bean.EventType;
-import com.event.bus.bus.component.bean.ExtraContext;
 import com.event.bus.bus.component.bean.ProjectBean;
 import com.event.bus.bus.component.bean.ResourceBase;
 import org.junit.jupiter.api.Test;
@@ -40,8 +39,6 @@ class BusApplicationTests {
 
     /**
      * 树状调用
-     * 不适用与存在结果依赖的关系，如PROJECT_COMPONENT依赖COMPANY_COMPONENT的结果，A&B 依赖 PROJECT_COMPONENT的结果
-     * 适用互相独立的事件
      *
      *          COMPANY_COMPONENT
      *                 ｜
@@ -64,6 +61,8 @@ class BusApplicationTests {
         projectEvent.setEventType(EventType.ADD);
         projectEvent.setContext(new ProjectBean("project"));
         projectEvent.setContexts(new ArrayList<>());
+
+
 
         Event<ResourceBase> codeEvent = new Event<>();
         codeEvent.setUuid("B_COMPONENT");

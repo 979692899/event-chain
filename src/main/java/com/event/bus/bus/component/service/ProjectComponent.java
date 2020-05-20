@@ -2,9 +2,9 @@ package com.event.bus.bus.component.service;
 
 import com.event.bus.bus.component.AbstractComponent;
 import com.event.bus.bus.component.IComponent;
-import com.event.bus.bus.component.bean.CompanyBean;
 import com.event.bus.bus.component.bean.Event;
-import com.event.bus.bus.component.bean.ExtraContext;
+import com.event.bus.bus.component.comtext.CompanyContext;
+import com.event.bus.bus.component.comtext.ExtraContext;
 import com.event.bus.bus.component.bean.ProjectBean;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -33,7 +33,7 @@ public class ProjectComponent extends AbstractComponent<ProjectBean> implements 
     @Override
     protected void add(Event<ProjectBean> event) {
         System.out.println(event.getContext().getName());
-        ExtraContext context = event.getExtraContext();
+        CompanyContext context = (CompanyContext) event.getExtraContext();
         System.out.println(context.getCompanyBean());
         System.out.println("Project add");
     }

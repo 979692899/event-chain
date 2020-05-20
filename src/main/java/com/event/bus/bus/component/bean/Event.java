@@ -1,5 +1,6 @@
 package com.event.bus.bus.component.bean;
 
+import com.event.bus.bus.component.comtext.ExtraContext;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Event<T extends ResourceBase> {
     private List<Event<T>> children = new ArrayList<>();
 
     /**
-     * 附加参数，事件链中上下游传递参数的一种折中参数，主要用与context和contexts不能满足的情况
+     * 附加参数，事件链中上下游传递参数
      */
     private ExtraContext extraContext;
 
