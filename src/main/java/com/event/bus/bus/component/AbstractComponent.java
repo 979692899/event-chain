@@ -40,11 +40,13 @@ public abstract class AbstractComponent<Listener extends ResourceBase> implement
             default:
                 break;
         }
+        // 传播子事件
         dispatchEvent(event);
     }
 
     /**
      * 组件内过滤不需要处理的事件
+     * 当 uuid 为空时，所有监听相关事件的组件都会触发
      * @param event 事件
      * @return boolean
      */
@@ -62,7 +64,6 @@ public abstract class AbstractComponent<Listener extends ResourceBase> implement
 
     /**
      * 传播事件
-     * @param event 事件变种
      */
     protected void dispatchEvent(Event<Listener> event) {
         if (CollectionUtils.isNotEmpty(event.getChildren())) {
