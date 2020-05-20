@@ -62,23 +62,21 @@ class BusApplicationTests {
         projectEvent.setContext(new ProjectBean("project"));
         projectEvent.setContexts(new ArrayList<>());
 
+        Event<ResourceBase> bEvent = new Event<>();
+        bEvent.setUuid("B_COMPONENT");
+        bEvent.setEventType(EventType.ADD);
+        bEvent.setContext(new BBean("B"));
+        bEvent.setContexts(new ArrayList<>());
 
-
-        Event<ResourceBase> codeEvent = new Event<>();
-        codeEvent.setUuid("B_COMPONENT");
-        codeEvent.setEventType(EventType.ADD);
-        codeEvent.setContext(new BBean("B"));
-        codeEvent.setContexts(new ArrayList<>());
-
-        Event<ResourceBase> cafeEvent = new Event<>();
-        cafeEvent.setUuid("A_COMPONENT");
-        cafeEvent.setEventType(EventType.DELETE);
-        cafeEvent.setContext(new ABean("A"));
-        cafeEvent.setContexts(new ArrayList<>());
+        Event<ResourceBase> aEvent = new Event<>();
+        aEvent.setUuid("A_COMPONENT");
+        aEvent.setEventType(EventType.DELETE);
+        aEvent.setContext(new ABean("A"));
+        aEvent.setContexts(new ArrayList<>());
 
         event.addChildrenEvent(projectEvent);
-        projectEvent.addChildrenEvent(cafeEvent);
-        projectEvent.addChildrenEvent(codeEvent);
+        projectEvent.addChildrenEvent(aEvent);
+        projectEvent.addChildrenEvent(bEvent);
 
         eventBusCenter.postAsync(event);
     }

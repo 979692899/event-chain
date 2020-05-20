@@ -4,7 +4,6 @@ import com.event.bus.bus.component.AbstractComponent;
 import com.event.bus.bus.component.IComponent;
 import com.event.bus.bus.component.bean.Event;
 import com.event.bus.bus.component.comtext.CompanyContext;
-import com.event.bus.bus.component.comtext.ExtraContext;
 import com.event.bus.bus.component.bean.ProjectBean;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;

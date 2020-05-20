@@ -28,17 +28,6 @@ public class Event<T extends ResourceBase> {
         this.children.add(event);
     }
 
-    public Event<T> generateChildrenEvent(String uuid, EventType eventType,
-                                 T context, ArrayList<T> contexts, ExtraContext extraContext) {
-        Event<T> event = new Event<>();
-        event.setUuid(uuid);
-        event.setEventType(eventType);
-        event.setContext(context);
-        event.setContexts(contexts);
-        event.setExtraContext(extraContext);
-        return event;
-    }
-
     public ExtraContext getExtraContext() {
         if (this.extraContext == null) {
             return new ExtraContext();
